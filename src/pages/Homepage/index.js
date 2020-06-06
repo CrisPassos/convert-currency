@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import Select from "../../components/Select";
 
 function HomePage() {
   const [currency, setCurrency] = useState([]);
@@ -13,10 +14,16 @@ function HomePage() {
     [currency]
   );
 
+  function getSelection(e) {
+    console.log(e);
+  }
+
   return (
     <div>
       <Header />
-      <p>MIDDLE</p>
+      <div>
+        <Select onChange={getSelection} />
+      </div>
       <Footer />
     </div>
   );
