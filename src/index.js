@@ -1,16 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../src/assets/scss/_base.scss";
 
+import { Provider } from "react-redux";
+import { HashRouter } from "react-router-dom";
+
+import "../src/assets/scss/_base.scss";
 import App from "../src/containers/App/App";
 
 //TODO: chamar a API em background
 import * as serviceWorker from "./serviceWorker";
+import store from "./stores/store";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
