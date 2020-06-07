@@ -8,7 +8,7 @@ const Select = ({onChange}) => {
 
   return (
     <>
-      <OPTION options={CURRENCIES} onChange={e => onChange(e)} />
+      <OPTION options={CURRENCIES} defaultValue={CURRENCIES[29]} onChange={e => onChange(e)} />
     </>
   );
 };

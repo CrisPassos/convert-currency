@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -8,41 +7,42 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Select from "../../components/Select";
 
+import http from "../../utils/config/http";
+
 import { TARGETS } from "../../utils/constants/targets";
 
-import { requestCurrency } from "./actions";
-
 function HomePage() {
-  const dispatch = useDispatch();
-
-  const [currenciesValue, setCurrenciesValue] = useState([]);
+  const [currencies, setCurrencies] = useState([]);
   const [valueConvert, setValueConvert] = useState("");
 
-  const { currency } = useSelector(state => state.currency);
-
-  useEffect(() => {
-    setCurrenciesValue([
-      "0.11",
-      "0.22",
-      "0.33",
-      "0.44",
-      "0.55",
-      "0.66",
-      "0.77",
-      "0.88",
-    ]);
-  }, []);
-
-  function getSelection(e) {
-    dispatch(requestCurrency(e.value));
-
-    console.log(currency);
+  async function getSelection(e) {
+    await getTicker(e.value);
   }
 
   function getValue(e) {
-    console.log(e.target.value);
     setValueConvert(e.target.value);
-    console.log(valueConvert);
+  }
+
+  async function getTicker(data) {
+    try {
+      const response = await http.getTicker(data);
+
+      const targetValues = [];
+
+      const targetCountries = TARGETS.map(item => {
+        return `${data}${item.name}`;
+      });
+
+      response.forEach(item => {
+        if (targetCountries.includes(item.pair)) {
+          targetValues.push(item.bid * valueConvert);
+        }
+      });
+
+      setCurrencies(targetValues);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   const targetValue = TARGETS.map(item => {
@@ -54,7 +54,7 @@ function HomePage() {
     );
   });
 
-  const convertValue = currenciesValue.map(item => {
+  const convertValue = currencies.map(item => {
     return <li key={item}>{item}</li>;
   });
 
