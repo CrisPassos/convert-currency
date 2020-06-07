@@ -7,8 +7,8 @@ import { getCurrencies } from "../actions";
 
 export function* getCurrency({ data }) {
   try {
-    const resp = yield http.get("/ticket");
-    yield put(getCurrencies(resp.data));
+    const resp = yield http.getTicker(data);
+    yield put(getCurrencies(resp));
   } catch (error) {
     reject(error);
   }

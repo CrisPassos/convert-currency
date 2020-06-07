@@ -1,7 +1,7 @@
 import { REQUEST_CURRENCY, GET_CURRENCY } from "../actions/currencyTypes";
 
 const initialState = {
-  currencies: [],
+  currency: [],
 };
 
 export const currencyReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ export const currencyReducer = (state = initialState, action) => {
       return { ...state };
 
     case GET_CURRENCY:
-      return { ...state, stores: action.stores };
+      return { ...state, currency: action.currency };
 
     default:
       return state;

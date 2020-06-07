@@ -1,9 +1,10 @@
-import axios from "axios";
 
-export const API_URL = "https://api.uphold.com/v0/t";
+import SDK from "@uphold/uphold-sdk-javascript";
 
-const http = axios.create({
-  baseURL: API_URL,
+const http = new SDK({
+  baseUrl: "http://api-sandbox.uphold.com",
+  clientId: "BITRESERVE",
+  clientSecret: "secret",
 });
 
 export default http;
