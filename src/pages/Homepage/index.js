@@ -9,6 +9,8 @@ import Select from "../../components/Select";
 
 import http from "../../utils/config/http";
 
+import "./styles.scss";
+
 import { TARGETS } from "../../utils/constants/targets";
 
 function HomePage() {
@@ -63,8 +65,6 @@ function HomePage() {
     );
   });
 
-
-
   return (
     <div>
       <Header />
@@ -72,14 +72,14 @@ function HomePage() {
         <Row md={3}>
           <Col />
           <Col>
-            <h1 className="text-center">Currency Converter</h1>
+            <h1 className="text-center h2">Currency Converter</h1>
           </Col>
         </Row>
 
         <Row md={3}>
           <Col />
           <Col>
-            <p className="text-center">
+            <p className="text-center mt-3 mb-5 font-size">
               Receive competitive and transparent pricing with no hidden
               spreads. See how to compare.
             </p>
@@ -87,23 +87,23 @@ function HomePage() {
         </Row>
 
         <Row md={3}>
+          <Col/>
           <Col>
-            <Form.Control type="number" onChange={e => getValue(e)} />
-            {/* <CurrencyFormat thousandSeparator={true} onValueChange={(e) => console.log(e)}/> */}
-          </Col>
-          <Col>
+            <div className="background">
+            <Form.Control type="number" className="input-number mt-2 w-50" onChange={e => getValue(e)} />
             <Select onChange={e => getSelection(e)} />
+            </div>
+            {/* <CurrencyFormat thousandSeparator={true} onValueChange={(e) => console.log(e)}/> */}
           </Col>
           <Col />
         </Row>
         <Row md={3}>
           { currencies.length !== 0 ? 
             <>
+              <Col/>
               <Col>
-                <ul className="float-right mt-2">{convertValue}</ul>
-              </Col>
-              <Col>
-                <ul className="float-left mt-3">{targetValue}</ul>
+                <ul className="float-left mt-2 mr-5">{convertValue}</ul>
+                <ul className="float-rigth mt-3">{targetValue}</ul>
               </Col>
             </>
            : 

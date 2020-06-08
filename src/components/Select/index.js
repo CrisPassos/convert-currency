@@ -10,7 +10,7 @@ const Select = ({onChange}) => {
 
   return (
     <>
-      <OPTION options={CURRENCIES} defaultValue={CURRENCIES[29]} onChange={e => onChange(e)} className="format-select float-right" />
+      <OPTION options={CURRENCIES} defaultValue={CURRENCIES[29]} onChange={e => onChange(e)} className="format-select float-right mt-3 mr-2" />
     </>
   );
 };
