@@ -103,7 +103,7 @@ function HomePage() {
                 <ul className="float-right mt-2">{convertValue}</ul>
               </Col>
               <Col>
-                <ul className="float-right mt-3">{targetValue}</ul>
+                <ul className="float-left mt-3">{targetValue}</ul>
               </Col>
             </>
            : 
@@ -114,7 +114,9 @@ function HomePage() {
           }
         </Row>
       </Container>
-      <Footer />
+     <Footer />
+ 
+
     </div>
   );
 }
