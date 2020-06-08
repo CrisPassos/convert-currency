@@ -55,9 +55,15 @@ function HomePage() {
     );
   });
 
-  const convertValue = currencies.map(item => {
-    return <li key={item}>{item}</li>;
+  const convertValue = currencies.map((item, index) => {
+    return (
+      <li key={index} className="mt-3">
+        <span>{item}</span>
+      </li>
+    );
   });
+
+
 
   return (
     <div>
@@ -91,12 +97,21 @@ function HomePage() {
           <Col />
         </Row>
         <Row md={3}>
-          <Col>
-            <ul>{convertValue}</ul>
-          </Col>
-          <Col>
-            <ul className="float-right mt-3">{targetValue}</ul>
-          </Col>
+          { currencies.length !== 0 ? 
+            <>
+              <Col>
+                <ul className="float-right mt-2">{convertValue}</ul>
+              </Col>
+              <Col>
+                <ul className="float-right mt-3">{targetValue}</ul>
+              </Col>
+            </>
+           : 
+            <>
+              <Col />
+              <Col> <p className="text-center mt-3">Enter an amount to check the rates.</p> </Col>
+            </>
+          }
         </Row>
       </Container>
       <Footer />
