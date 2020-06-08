@@ -32,8 +32,8 @@ const itemS = social.map(item => {
 
 function Footer() {
   return (
-    <div className="fixed-bt">
-      <Container className="footer">
+    <div className="footer">
+      <Container>
         <hr />
 
         <Row>

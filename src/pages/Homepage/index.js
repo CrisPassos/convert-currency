@@ -28,10 +28,18 @@ function HomePage() {
   async function getTicker(country = "USD") {
     const targetValues = [];
 
+    TARGETS.forEach((item, index) => {
+      if(item.name === country) {
+        TARGETS.splice(index, 1);
+      }
+    });
+    
+
     const targetCountries = TARGETS.map(item => {
       return `${country}${item.name}`;
     });
 
+   
     try {
       const response = await http.getTicker(country);
       sessionStorage.setItem("data", JSON.stringify(response));
@@ -103,7 +111,7 @@ function HomePage() {
               <Col/>
               <Col>
                 <ul className="float-left mt-2 mr-5">{convertValue}</ul>
-                <ul className="float-rigth mt-3">{targetValue}</ul>
+                <ul className="mt-3">{targetValue}</ul>
               </Col>
             </>
            : 
