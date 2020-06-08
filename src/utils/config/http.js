@@ -1,4 +1,3 @@
-
 import SDK from "@uphold/uphold-sdk-javascript";
 
 const http = new SDK({

@@ -23,15 +23,16 @@ function HomePage() {
     setValueConvert(e.target.value);
   }
 
-  async function getTicker(data) {
+  async function getTicker(country = "USD") {
+    const targetValues = [];
+
+    const targetCountries = TARGETS.map(item => {
+      return `${country}${item.name}`;
+    });
+
     try {
-      const response = await http.getTicker(data);
-
-      const targetValues = [];
-
-      const targetCountries = TARGETS.map(item => {
-        return `${data}${item.name}`;
-      });
+      const response = await http.getTicker(country);
+      sessionStorage.setItem("data", JSON.stringify(response));
 
       response.forEach(item => {
         if (targetCountries.includes(item.pair)) {
@@ -47,9 +48,9 @@ function HomePage() {
 
   const targetValue = TARGETS.map(item => {
     return (
-      <li key={item.name}>
-        <img src={item.image} alt={item.name} />
-        <span>{item.name}</span>
+      <li key={item.name} className="mb-3">
+        <img src={item.image} alt={item.name} className="size-image" />
+        <span className="ml-3">{item.name}</span>
       </li>
     );
   });
@@ -63,6 +64,23 @@ function HomePage() {
       <Header />
       <Container>
         <Row md={3}>
+          <Col />
+          <Col>
+            <h1 className="text-center">Currency Converter</h1>
+          </Col>
+        </Row>
+
+        <Row md={3}>
+          <Col />
+          <Col>
+            <p className="text-center">
+              Receive competitive and transparent pricing with no hidden
+              spreads. See how to compare.
+            </p>
+          </Col>
+        </Row>
+
+        <Row md={3}>
           <Col>
             <Form.Control type="number" onChange={e => getValue(e)} />
             {/* <CurrencyFormat thousandSeparator={true} onValueChange={(e) => console.log(e)}/> */}
@@ -72,12 +90,12 @@ function HomePage() {
           </Col>
           <Col />
         </Row>
-        <Row>
+        <Row md={3}>
           <Col>
             <ul>{convertValue}</ul>
           </Col>
           <Col>
-            <ul>{targetValue}</ul>
+            <ul className="float-right mt-3">{targetValue}</ul>
           </Col>
         </Row>
       </Container>
