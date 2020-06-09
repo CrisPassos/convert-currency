@@ -3,8 +3,11 @@ import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
+import "./styles.scss";
+
 function Header() {
   return (
+    <>
     <Navbar className="mb-4">
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -25,6 +28,7 @@ function Header() {
         </Button>
       </Navbar.Collapse>
     </Navbar>
+    </>
   );
 }
 

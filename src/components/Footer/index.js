@@ -1,10 +1,10 @@
 import React from "react";
-
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+
+import "./styles.scss";
 
 const products = ["Consumers", "Business", "Partners"];
 const company = ["About", "Carrers", "Press", "Blog"];
@@ -32,10 +32,9 @@ const itemS = social.map(item => {
 
 function Footer() {
   return (
-    <div className="footer">
-      <Container>
+    <>
+      <Container className="footer">
         <hr />
-
         <Row>
           <Col>
             <img
@@ -119,7 +118,7 @@ function Footer() {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

@@ -1,0 +1,9 @@
+@import "../../assets/scss/variables";
+
+.log-in {
+    background-color:$green-uphold !important;
+    color: $white !important;
+    border-radius: $border-size !important;
+    border-color:  $green-uphold !important;
+    width: 8.5rem;
+}
