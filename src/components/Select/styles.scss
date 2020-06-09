@@ -1,9 +1,11 @@
+@import "../../assets/scss/variables";
+
 .format-select {
     width: 7.5rem;
 }
 
 .css-yk16xz-control, .css-1pahdxg-control{
-    border-radius: 25px !important;
-    border-color: transparent !important;
+    border-radius: $border-size !important;
+    border-color: $transparent !important;
     box-shadow: none !important;
 }
