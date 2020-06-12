@@ -9,12 +9,10 @@ import http from "../../utils/config/http";
 import { TARGETS } from "../../utils/constants/targets";
 
 import "./styles.scss";
-import Error from "../Error";
 
 function Content() {
   const [currencies, setCurrencies] = useState([]);
   const [value, setValue] = useState("");
-  const [show, setShow] = useState(false);
 
   const handleSelect = e => {
       getTicker(value, e);
@@ -38,7 +36,7 @@ function Content() {
 
       setCurrencies(targetValues);
     } catch (error) {
-        setShow(true);
+      alert(error);
     }
   }
 
@@ -73,7 +71,6 @@ function Content() {
 
   return (
     <>
-     <Error open={show} />
       <Container>
         <Row md={3}>
           <Col />
